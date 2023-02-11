@@ -4,7 +4,6 @@ result = []
 search = input()
 
 def abc(level):
-    global temp
     if level == 3:
         temp = ''
         for i in range(len(path)):
