@@ -22,20 +22,3 @@ for _ in range(10):
     ans = y-1
     print(f"#{n} {ans}")
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
