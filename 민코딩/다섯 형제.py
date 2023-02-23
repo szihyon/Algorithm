@@ -38,6 +38,7 @@ print(cnt)
 
 
 # 두번째 방법
+# 이진트리 (사용할지 말지 두 가지 경우)
 # #st = list(map(int, input().split()))
 # st= [5, 4, 3, 9, 1]
 # cnt = 0
