@@ -2,7 +2,6 @@
 # DFS
 T = int(input())
 
-
 def abc(S, cnt, G):
     global min
 
@@ -18,7 +17,6 @@ def abc(S, cnt, G):
             used[i] = 1
             abc(i, cnt + 1, G)
             used[i] = 0
-
 
 for tc in range(1, T + 1):
     V, E = map(int, input().split())
@@ -41,8 +39,6 @@ for tc in range(1, T + 1):
         print(f"#{tc} 0")
     else:
         print(f"#{tc} {min}")
-
-
 
 #######################################################################
 
