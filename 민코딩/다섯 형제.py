@@ -7,6 +7,7 @@ path = [0]*5    # 최대 크기 5
 used = [0]*len(st)  # st에서 사용된 원소를 체크함으로써 중복사용 방지
 
 def abc(level, sum_val):
+    # print('level', level, 'used', used, 'path', path) 디버깅용 코드
     global cnt
 
     if 10 <= sum_val <= 20:   # 10~20사이의 값이 되었다고 return하면 안 됨. 20보다 작고 더 큰 수가 있을 수도 있음
