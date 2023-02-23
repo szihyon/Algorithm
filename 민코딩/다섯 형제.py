@@ -42,8 +42,8 @@ print(cnt)
 # st= [5, 4, 3, 9, 1]
 # cnt = 0
 #
-# def abc(level, sum_val,results=[]):
-#     print(level,sum_val,results)
+# def abc(level, sum_val,results=[]):   # 세번째 매개변수는 디버깅용
+#     # print(level,sum_val,results) 디버깅용 코드
 #     global cnt
 #     if sum_val>20:
 #         return
