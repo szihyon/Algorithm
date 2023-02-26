@@ -1,4 +1,4 @@
-# DFS
+# BFS
 from collections import deque
 
 def bfs(y, x):
