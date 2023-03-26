@@ -19,3 +19,20 @@ def find(X,Y):
     return mint
 
 print(find(x,y))
+
+######################
+x, y = map(int, input().split())
+
+def find(X,Y):
+    loc={X}
+    for t in range(0,100):
+        print(t,loc)
+        if Y in loc:
+            break
+        newloc={x-1 for x in loc}
+        newloc.update({x+1 for x in loc})
+        newloc.update({2*x for x in loc})
+        loc=newloc
+    return t
+
+print(find(x,y))
