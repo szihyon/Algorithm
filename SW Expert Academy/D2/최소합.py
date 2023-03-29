@@ -5,6 +5,10 @@ directX = [1, 0]
 
 def abc(y, x, sumV):
     global minV
+    
+   if sumV > minV:
+    return
+    
     if y == n-1 and x == n-1:
         if sumV < minV:
             minV = sumV
