@@ -1,23 +1,28 @@
-dx = (0, 1, 0, -1)
-dy = (1, 0, -1, 0)
+T = int(input())
 
-t = int(input())
-for tc in range(1, t + 1):
+for tc in range(1, T + 1):
     n = int(input())
-    arr = [[0] * n for _ in range(n)]
-    # 초기값 설정(초기좌표, 방향)
-    x, y, dr = 0, 0, 0
-    for cnt in range(1, n * n + 1):
-        arr[x][y] = cnt
-        # 다음 좌표 계산
-        nx, ny = x + dx[dr], y + dy[dr]
-        # 이동할 위치가 범위 내 & 비어 있으면 (값이 0이면)
-        if 0 <= nx < n and 0 <= ny < n and arr[nx][ny] == 0:
-            x, y = nx, ny
-        else:
-            dr = (dr + 1) % 4
-            x, y = x + dx[dr], y + dy[dr]
-    print(f'#{tc}')
+    lst = [[0] * n for _ in range(n)]
+    num = 1
+    last_num = n * n
 
-    for lst in arr:
-        print(*lst)
+    directY = [0, 1, 0, -1]
+    directX = [1, 0, -1, 0]
+    dir = 0
+
+    x = y = 0
+    while num <= last_num:
+        lst[y][x] = num
+        dy = y + directY[dir]
+        dx = x + directX[dir]
+        if (dy < 0 or dx < 0 or dy > n-1 or dx > n-1) or lst[dy][dx] != 0:
+            dir = (dir + 1) % 4
+        y = y + directY[dir]
+        x = x + directX[dir]
+        num += 1
+
+    print(f"#{tc}")
+    for i in lst:
+        for j in i:
+            print(j, end=' ')
+        print()
