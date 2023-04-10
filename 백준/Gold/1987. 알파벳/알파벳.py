@@ -1,36 +1,27 @@
-# 입력값 받기 
 r, c = map(int, input().split())
 lst = [list(input()) for _ in range(r)]
-# 상하좌우 탐색
-directY = [-1, 0, 0, 1]
-directX = [0, -1, 1, 0]
 
-def dfs(y, x, cnt):
-    global M_cnt
-    # cnt최대값 갱신 
-    if cnt > M_cnt:
-        M_cnt = cnt
-    
-    # 상하좌우 탐색하기
-    for i in range(4):
-        dy = directY[i] + y
-        dx = directX[i] + x
-        # 범위 벗어나면 continue
-        if dy < 0 or dx < 0 or dy > r-1 or dx > c-1: continue
-        # 방문했던 곳이면 continue
-        if visited[ord(lst[dy][dx])] == 1: continue
-        # 방문체크하고
-        visited[ord(lst[dy][dx])] = 1
-        # dfs함수 실행, 매개변수로 cnt+1 넘겨주기
-        dfs(dy, dx, cnt+1)
-        # return하면서 방문체크 해제해주기
-        visited[ord(lst[dy][dx])] = 0
+def bfs(stY, stX, cnt, path):
+    directY = [-1, 0, 0, 1]
+    directX = [0, -1, 1, 0]
+    q = set()
+    q.add((stY, stX, cnt, path))
+    M_cnt = 0
 
-# DAT 활용하기
-visited = [0]*100
-# 첫 시작점 
-visited[ord(lst[0][0])] = 1
-M_cnt = 0
+    while q:
+        nowY, nowX, cnt, path = q.pop()
+        if cnt > M_cnt:
+            M_cnt = cnt
+        for i in range(4):
+            dy = directY[i] + nowY
+            dx = directX[i] + nowX
+            if dy < 0 or dx < 0 or dy > r-1 or dx > c-1:continue
+            if lst[dy][dx] in path: continue
+            q.add((dy, dx, cnt+1, path+lst[dy][dx]))
 
-dfs(0, 0, 1)
-print(M_cnt)
+    return M_cnt
+
+path = []
+path.append(lst[0][0])
+res = bfs(0, 0, 1, lst[0][0])
+print(res)
