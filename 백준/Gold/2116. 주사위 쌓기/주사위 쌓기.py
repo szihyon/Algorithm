@@ -1,3 +1,6 @@
+import sys
+input = sys.stdin.readline
+
 opposite=[5,3,4,1,2,0] 
 # [0,1,2,3,4,5]의 반대편 인덱스들임
 # 반대편 숫자 쌍들은 아래와 같기 때문
