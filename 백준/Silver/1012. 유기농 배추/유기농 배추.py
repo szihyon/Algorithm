@@ -31,3 +31,4 @@ for _ in range(T):
                 cnt += 1
                 bfs(i, j)
     print(cnt)
+    
