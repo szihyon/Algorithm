@@ -10,7 +10,6 @@ cnt = 0
 
 
 def bfs(stY, stX):
-    global size, cnt
     q = deque()
     q.append((stY, stX, 0))
     directY = [-1, 0, 0, 1]
