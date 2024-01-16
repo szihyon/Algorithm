@@ -1,0 +1,28 @@
+def solution(today, terms, privacies):
+    answer = []
+    today_year, today_month, today_date = map(int, today.split("."))
+    
+    terms_dict = {}
+    for term in terms:
+        term_type, term_period  = term.split()
+        terms_dict[term_type] = int(term_period)
+    
+    for idx, privacy in enumerate(privacies):
+        privacy_date, term_type = privacy.split()
+        year, month, date = map(int, privacy_date.split("."))
+        y, m = divmod(month + terms_dict[term_type], 12) 
+        exp_year = year + y
+        exp_month = m
+        exp_date = date
+        if m == 0:
+            exp_month = 12
+            exp_year -= 1
+            
+        if today_year > exp_year:
+            answer.append(idx+1)
+        elif today_year == exp_year and today_month > exp_month:
+            answer.append(idx+1)
+        elif today_year == exp_year and today_month == exp_month and today_date >= exp_date:
+            answer.append(idx+1)
+            
+    return answer
