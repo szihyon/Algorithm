@@ -6,7 +6,7 @@ def solution(s, skip, index):
         while cnt < index:
             check_alphabet = ord(alphabet) + i
             if check_alphabet > ord('z'):
-                while check_alphabet > ord('z') or check_alphabet < ord('a'):
+                while check_alphabet > ord('z'): 
                     check_alphabet -= ord('z') - ord('a') + 1
             if chr(check_alphabet) not in skip:
                 cnt += 1
