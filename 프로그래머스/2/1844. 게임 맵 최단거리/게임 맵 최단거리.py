@@ -11,8 +11,6 @@ def solution(maps):
     q = deque()
     q.append([0, 0, 1])
     
-    visited = [[0] * m for _ in range(n)]  
-    
     while q:
         nowY, nowX, move = q.popleft()
         if nowY == n-1 and nowX == m-1:
@@ -20,9 +18,9 @@ def solution(maps):
         for i in range(4):
             dy = directY[i] + nowY
             dx = directX[i] + nowX
-            if dy < 0 or dx < 0 or dy >= n or dx >= m: continue
-            if visited[dy][dx] == 1 or maps[dy][dx] == 0: continue
-            visited[dy][dx] = 1  
+            if dy < 0 or dx < 0 or dy > n-1 or dx > m-1: continue
+            if maps[dy][dx] == 0: continue
+            maps[dy][dx] = 0
             q.append([dy, dx, move+1])
     
     return -1
