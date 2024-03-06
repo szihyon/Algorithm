@@ -10,10 +10,10 @@ def bfs(start):
         now = q.popleft()
         for i in range(N+1):
             if graph[now][i] == 1 and visit[i] == 0:
+                visit[i] = 1
                 if i == start:
                     cnt += 1
                     return
-                visit[i] = 1
                 q.append(i)
 
 
