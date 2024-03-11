@@ -1,6 +1,6 @@
 def solution(n, times):
     min_time = 1
-    max_time = max(times) * (n-1) # 모든 사람이 가장 오래 걸리는 심사대를 이용할 때의 시간
+    max_time = max(times) * n # 모든 사람이 가장 오래 걸리는 심사대를 이용할 때의 시간
 
     while min_time <= max_time:
         mid_time = (min_time + max_time) // 2
