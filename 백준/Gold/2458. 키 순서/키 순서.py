@@ -10,9 +10,9 @@ for _ in range(M):
     lst[a-1][b-1] = 1
 
 # 플로이드 워셜 알고리즘 적용
-for i in range(N):
-    for j in range(N):
-        for k in range(N):
+for i in range(N): # 중간지점
+    for j in range(N): # 시작지점
+        for k in range(N): # 도착지점
             if lst[j][i] == 1 and lst[i][k] == 1:
                 lst[j][k] = 1
 
