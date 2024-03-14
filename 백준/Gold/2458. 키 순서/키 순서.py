@@ -1,18 +1,22 @@
 N, M = map(int, input().split())
 
 answer = 0
+# 키 비교 정보를 담을 2차원 배열
 lst = [[0]*N for _ in range(N)]
 
+# 키 비교 여부 체크
 for _ in range(M):
     a, b = map(int, input().split())
     lst[a-1][b-1] = 1
 
+# 플로이드 워셜 알고리즘 적용
 for i in range(N):
     for j in range(N):
         for k in range(N):
             if lst[j][i] == 1 and lst[i][k] == 1:
                 lst[j][k] = 1
 
+# 순서를 매길 수 있는 학생 수 계산
 for i in range(N):
     cnt = 0
     for j in range(N):
