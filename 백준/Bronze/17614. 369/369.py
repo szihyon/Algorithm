@@ -1,11 +1,11 @@
 N = int(input())
-clap = [3, 6, 9]
-total = 0
 
-for num in range(1, N+1):
-    num = list(map(int, list(str(num))))
-    for i in range(len(num)):
-        if num[i] in clap:
-            total += 1
+check = '369'
+rst = 0
 
-print(total)
+for i in range(1, N+1):
+    str_num = str(i)
+    for c in check:
+        rst += str_num.count(c)
+
+print(rst)
