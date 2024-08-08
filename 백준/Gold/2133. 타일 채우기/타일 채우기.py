@@ -1,11 +1,16 @@
 n = int(input())
 
-dp = [0]*(n+1)
-dp[0] = 1
-if n >= 2: dp[2] = 3 # N이 2일 때 3가지
+if n % 2 != 0:
+    print(0)
+else:
+    n = n // 2
+    dp = [0] * (n + 1)
+    dp[0] = 1  # 초기값
 
-# 짝수인 경우
-for i in range(4, n+1, 2): # 4부터 시작
-    dp[i] = 4*dp[i-2] - dp[i-4]
+    # DP 테이블 채우기
+    for i in range(1, n + 1):
+        dp[i] += 3 * dp[i - 1]
+        for j in range(2, i + 1):
+            dp[i] += 2 * dp[i - j]
 
-print(dp[n])
+    print(dp[n])
