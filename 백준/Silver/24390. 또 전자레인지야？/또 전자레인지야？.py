@@ -1,19 +1,16 @@
-minutes, seconds = input().split(":")
-minutes = int(minutes)
-seconds = int(seconds)
-button = 1
+m, s = map(int, input().split(':'))
+count = 0
 
-if seconds >= 30:
-    seconds -= 30
-if seconds < 30:
-    button += seconds//10 
-    seconds = 0
+# 10분 버튼과 1분 버튼으로 분 처리
+count += m // 10  # 10분 버튼 횟수
+count += m % 10   # 1분 버튼 횟수
 
-if minutes >= 10:
-    button += minutes//10
-    minutes -= (minutes//10) * 10
-if minutes >= 1:
-    button += minutes//1
-    minutes -= (minutes//1) * 1
+# 초 처리: 30초 이상이면 조리시작(30초) 먼저, 30초 미만이면 10초 버튼 먼저
+if s >= 30:
+    count += 1              # 조리시작 버튼(30초)
+    count += (s - 30) // 10 # 남은 초를 10초 버튼으로
+else:
+    count += s // 10        # 10초 버튼으로 초 설정
+    count += 1              # 조리시작 버튼(30초)
 
-print(button)   
+print(count)
