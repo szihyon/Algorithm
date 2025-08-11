@@ -1,30 +1,24 @@
 import sys
-sys.setrecursionlimit(10**6)
+sys.setrecursionlimit(10**6)  # 재귀 깊이 충분히 늘리기
 input = sys.stdin.readline
 
 n, k = map(int, input().split())
-lst = [[] for _ in range(n)]
+g = [[] for _ in range(n)]
 
-for _ in range(n-1):
+# 트리 간선 입력
+for _ in range(n - 1):
     p, c = map(int, input().split())
-    lst[p].append(c)
-apple = list(map(int, input().split()))
+    g[p].append(c)
 
-visit = [0]*n
-answer = 0
-def dfs(now, distance):
-    global answer
-    if distance > k:
-        return
-    if apple[now] == 1:
-        answer += 1
-    for next in lst[now]:
-        if visit[next] == 1: return
-        visit[next] = 1
-        dfs(next, distance+1)
-        visit[next] = 0
+# 각 노드의 사과 여부
+apples = list(map(int, input().split()))
 
-visit[0] = 1
-dfs(0, 0)
+def dfs(node, depth):
+    if depth > k:  # k 초과면 더 내려가지 않음
+        return 0
+    total = apples[node]  # 현재 노드 사과 수(0 또는 1)
+    for child in g[node]:
+        total += dfs(child, depth + 1)
+    return total
 
-print(answer)
+print(dfs(0, 0))
