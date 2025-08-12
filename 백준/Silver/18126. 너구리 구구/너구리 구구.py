@@ -3,25 +3,18 @@ sys.setrecursionlimit(10**6)
 input = sys.stdin.readline
 
 N = int(input())
-lst = [[] for _ in range(N+1)]
+graph = [[] for _ in range(N+1)]
 
 for _ in range(N-1):
-    A, B, C = map(int, input().split())
-    lst[A].append((B, C))
-    lst[B].append((A, C))
+    a, b, c = map(int, input().split())
+    graph[a].append((b, c))
+    graph[b].append((a, c))
 
-visit = [0]*(N+1)
-maxV = 0
-def dfs(now, total_distance):
-    global maxV
-    if total_distance > maxV:
-        maxV = total_distance
-    for next, distance in lst[now]:
-        if visit[next] == 1: continue
-        visit[next] = 1
-        dfs(next, total_distance+distance)
-        visit[next] = 0
+def dfs(node, parent, dist):
+    max_dist = dist
+    for next_node, weight in graph[node]:
+        if next_node != parent:  # visit 배열 대신 parent로 처리
+            max_dist = max(max_dist, dfs(next_node, node, dist + weight))
+    return max_dist
 
-visit[1] = 1
-dfs(1, 0)
-print(maxV)
+print(dfs(1, -1, 0))
