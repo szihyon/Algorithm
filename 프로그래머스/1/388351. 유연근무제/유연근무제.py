@@ -2,15 +2,14 @@ def solution(schedules, timelogs, startday):
     answer = 0
     
     #시간을 분으로 변환
+    def time_to_minutes(time):
+        return (time // 100) * 60 + (time % 100)
+    
     for i in range(len(schedules)):
-        h = schedules[i] // 100
-        m = schedules[i] % 100
-        schedules[i] = h*60 + m + 10 # +10분  
+        schedules[i] = time_to_minutes(schedules[i]) + 10 # +10분  
     for i in range(len(timelogs)):
         for j in range(len(timelogs[i])):
-            h = timelogs[i][j] // 100
-            m = timelogs[i][j] % 100
-            timelogs[i][j] = h*60 + m 
+            timelogs[i][j] = time_to_minutes(timelogs[i][j]) 
     
     cnt_lst = []
     for i in range(len(timelogs)):
