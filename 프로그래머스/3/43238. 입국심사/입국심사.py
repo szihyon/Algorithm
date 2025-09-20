@@ -4,12 +4,13 @@ def solution(n, times):
 
     while min_time <= max_time:
         mid_time = (min_time + max_time) // 2
-        total = sum(mid_time // time for time in times)
+        sum_n = sum(mid_time // time for time in times) # 심사할 수 있는 사람 수 
 
-        if total >= n: # 모든 사람을 심사할 수 있는 경우, 시간을 줄여본다
+        if sum_n >= n: # 모든 사람을 심사할 수 있는 경우, 시간을 줄여본다.
             max_time = mid_time - 1
-        else: # 모든 사람을 심사할 수 없는 경우, 시간을 늘린다
+        else: # 모든 사람을 심사할 수 없는 경우, 시간을 늘려본다.
             min_time = mid_time + 1
             
     answer = min_time
+    
     return answer
