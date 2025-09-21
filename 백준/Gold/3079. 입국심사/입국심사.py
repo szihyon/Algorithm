@@ -17,8 +17,9 @@ while left <= right:
     
     if people < M:    #상근이와 친구들 수 보다 적으면
         left = mid+1    #시간 더 늘리기
-        answer = mid+1
+        answer = mid+1    #상근이와 친구들 수와 '같거나' 크면
     else:
         right = mid-1
+
 
 print(answer)
