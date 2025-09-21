@@ -3,7 +3,7 @@ t_lst = []
 for _ in range(N):
     t_lst.append(int(input()))
 
-left = 0
+left = 1
 right = max(t_lst) * M  #가장 오래걸리는 심사대에만 줄서는 경우 시간
 answer = max(t_lst) * M
 
@@ -21,4 +21,5 @@ while left <= right:
         right = mid-1
 
 answer = left
+
 print(answer)
